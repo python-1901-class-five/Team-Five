@@ -1,6 +1,8 @@
 print('achen')
 print("aaaaa")
 print("hcy 11111")
+print("不能写中文？？？")
+print('three')
 print("2222")
 print("This  is  for you")
 print("不能写中文？？？")
