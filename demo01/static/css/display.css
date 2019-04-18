@@ -1,0 +1,17 @@
+h4{
+    margin-left: 50px;
+}
+ul{
+    list-style: none;
+    margin-left: 50px;
+    margin-bottom: 50px;
+}
+ul li{
+    color: red;
+    margin-top: 20px;
+}
+a{
+    text-decoration: none;
+    display: block;
+    text-align: center;
+}

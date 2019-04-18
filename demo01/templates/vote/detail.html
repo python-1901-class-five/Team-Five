@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>投票信息</title>
+    {% load static from staticfiles %}
+    <link rel="stylesheet" href="{% static '/css/main.css'%}">
+    <link rel="stylesheet" href="{% static '/css/form.css'%}">
+</head>
+<body>
+    <div class="container">
+        <h3>投票信息:{{questions.qtitle}}</h3>
+        <form action="{% url 'vote:result'%}" method="post">
+            <h4>投票选项</h4>
+            <input type="hidden" value="{{questions.id}}" name="qid" />
+            {% for choice in choices%}
+            <input type="radio" name="choice" value="{{choice}}">{{choice}}<br>
+            {% endfor%}
+            <input type="submit" value="投票">
+        </form>
+        <a href="{%url 'vote:index'%}">返回</a>
+    </div>
+</body>
+</html>
