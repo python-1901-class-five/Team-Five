@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加选项</title>
+    {% load static from staticfiles %}
+    <link rel="stylesheet" href="{% static '/css/main.css'%}">
+</head>
+<body>
+    <form action="{% url 'vote:addchoicehandler'%}" method="post">
+        <h1>添加选项</h1>
+        <input type="hidden" value="{{question.id}}" name="quesid">
+        选项名称:<input type="text" value="选项信息" name="cname">
+        <input type="submit" value="添加">
+    </form>
+    <a href="{% url 'vote:detail' question.id %}">返回</a>
+</body>
+</html>

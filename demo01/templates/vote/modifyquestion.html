@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>修改问题</title>
+    {% load static from staticfiles %}
+    <link rel="stylesheet" href="{% static '/css/main.css'%}">
+</head>
+<body>
+    <div class="container">
+        <h1>修改问题</h1>
+        <form action="{% url 'vote:modifyquestionhandler'%}" method="post">
+            <input type="hidden" value="{{question.id}}" name="quesid">
+            要修改的标题: <input type="text" value="{{question.qtitle}}" name="qtitle">
+            <input type="submit" value="修改">
+        </form>
+        <a href="{% url 'vote:index'}">返回</a>
+    </div>
+</body>
+</html>

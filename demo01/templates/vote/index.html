@@ -11,11 +11,16 @@
         <h3>投票信息汇总</h3>
         <ul>
             {% for ques in questions %}
-                <li><a href="{% url 'vote:detail' ques.id %}">{{ques.id}}.{{ques.qtitle}}</a></li>
+                <li>
+                    <a href="{% url 'vote:detail' ques.id %}">{{ques.id}}.{{ques.qtitle}}</a>
+                    <a href="{% url 'vote:deletequestion' ques.id%}">删除</a>
+                    <a href="{% url 'vote:modifyquestion' ques.id%}">编辑</a>
+                </li>
             {% empty %}
-                <h3>无问题</h3>
+                <h3>没有问题哟!亲，快去添加问题吧</h3>
             {% endfor %}
         </ul>
+        <a href="{% url 'vote:addquestion'%}">添加问题</a>
     </div>
 </body>
 </html>

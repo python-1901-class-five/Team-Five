@@ -14,10 +14,15 @@
             <h4>投票选项</h4>
             <input type="hidden" value="{{questions.id}}" name="qid" />
             {% for choice in choices%}
-            <input type="radio" name="choice" value="{{choice}}">{{choice}}<br>
+            <input type="radio" name="choice" value="{{choice}}">{{choice}}
+            <a href="{% url 'vote:deletechoice' choice.id%}">删除</a>
+            <a href="{% url 'vote:modifychoice' choice.id%}">编辑</a><br>
+            {% empty %}
+            <span>没有选项，快去添加选项吧</span>
             {% endfor%}
             <input type="submit" value="投票">
         </form>
+        <a href="{% url 'vote:addchoice' questions.id %}">添加选项</a>
         <a href="{%url 'vote:index'%}">返回</a>
     </div>
 </body>

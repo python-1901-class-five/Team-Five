@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加问题</title>
+    {% load static from staticfiles %}
+    <link rel="stylesheet" href="{% static '/css/main.css'%}">
+</head>
+<body>
+    <div class="container">
+        <form action="{% url 'vote:addquestionhandler'%}" method="post">
+        <h1>添加问题</h1>
+        请输入问题题目:<input type="text" name="btitle"><br>
+        <input type="submit" value="添加">
+        </form>
+        <a href="{% url 'vote:index' %}">返回首页</a>
+    </div>
+</body>
+</html>
