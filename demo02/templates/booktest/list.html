@@ -3,21 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>列表</title>
+    {#<link rel="stylesheet" href="/static/css/main.css">#}
+    {% load static from staticfiles %}
+    <link rel="stylesheet" href="{% static '/css/main.css'%}">
 </head>
 <body>
-    <h1>图书列表</h1>
-    {% if booklist %}
-        <ul>
-            {% for book in booklist %}
-                {#<li><a href="/booktest/detail/{{book.pk}}">{{book}}</a></li>#}
-                <li><a href="{% url 'booktest:detail' book.pk %}">{{book}}</a></li>
-            {% endfor %}
-        </ul>
-
-    {% else %}
-        <h1>没有图书</h1>
-    {% endif %}
-    <!--<a href="/booktest">返回首页</a>-->
-    <a href="{% url 'booktest:index'%}">返回首页</a>
+    <div class="container">
+        <h1>图书列表</h1>
+        {% if booklist %}
+            <ul>
+                {% for book in booklist %}
+                    {#<li><a href="/booktest/detail/{{book.pk}}">{{book}}</a></li>#}
+                    <li>
+                        <a href="{% url 'booktest:detail' book.pk %}">{{book}}</a>
+                        <a href="{% url 'booktest:delete' book.pk %}">删除</a>
+                        <a href="#">编辑</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <h1>没有图书</h1>
+        {% endif %}
+        {#<a href="/booktest">返回首页</a>#}
+        <a href="{% url 'booktest:add'%}">添加图书</a>
+        <a href="{% url 'booktest:index'%}">返回首页</a>
+    </div>
 </body>
 </html>

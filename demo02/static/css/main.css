@@ -1,0 +1,11 @@
+.container{
+     width: 1100px;
+     height: 500px;
+     background-color: lightseagreen;
+     margin:  0 auto;
+ }
+.container img{
+    width: 200px;
+    height: 200px;
+    margin-left: 15px;
+}

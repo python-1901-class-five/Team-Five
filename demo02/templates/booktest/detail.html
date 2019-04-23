@@ -3,19 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>详情页</title>
+    {#<link rel="stylesheet" href="/static/css/main.css">#}
+    {% load static from staticfiles %}
+    <link rel="stylesheet" href="{% static '/css/main.css'%}">
 </head>
 <body>
-    <h1>图书信息</h1>
-    <h3>{{book.btitle}}</h3>
-    <h3>{{book.bpub_date}}</h3>
-    <h3>图书人物</h3>
-
-    <ul>
+    <div class="container">
+        <h1>图书信息</h1>
+        <h3>书名:{{book.btitle}}</h3>
+        <h3>创建日期:{{book.bpub_date}}</h3>
+        <h3>图书人物:</h3>
+        <ul>
         {% for hero in book.heroinfo_set.all %}
-            <li><a href="#">{{hero.hname}}</a>--{{hero.hcontent}}</li>
+            <li><a href="#">{{hero.hname}}</a>--{{hero.hcontent}}
+                <a href="#">删除</a>
+                <a href="#">修改</a>
+            </li>
         {% endfor %}
-    </ul>
-    <!--<a href="/booktest/list">返回</a>-->
-    <a href="{% url 'booktest:list' %}">返回</a>
+        </ul>
+        <!--<a href="/booktest/list">返回</a>-->
+        <a href="{% url 'booktest:addhero' book.id%}">添加英雄</a>
+        <a href="{% url 'booktest:list' %}">返回</a>
+    </div>
 </body>
 </html>

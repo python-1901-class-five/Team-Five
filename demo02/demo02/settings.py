@@ -24,6 +24,7 @@ SECRET_KEY = 'i=7h(c$j_hzj7ft9gw46+wka-lezev77r*jk7rx!%fc7pvtmg+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+# DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -44,7 +45,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -121,3 +122,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+SESSION_ENGINE = 'redis_sessions.session'
+SESSION_REDIS_HOST = 'locahost'
+SESSION_REDIS_PORT = 6379
+SESSION_REDIS_DB = 10
+SESSION_REDIS_PASSWORD = ''
+SESSION_REDIS_PREFIX = 'session'
