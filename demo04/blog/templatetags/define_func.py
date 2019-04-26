@@ -1,5 +1,5 @@
 from django import template
-from ..models import Category, Tags ,Article
+from ..models import Category, Tags, Article
 
 register = template.Library()
 
@@ -24,3 +24,13 @@ def getlastest():
 @register.simple_tag
 def gettime():
     return Article.objects.dates('create_time','month',order='DESC')[:3]
+
+
+@register.simple_tag(takes_context=True)
+def getpage(Articles):
+    articles = Articles.objects.all()
+    pagelist = []
+    for i in range(len(articles)):
+        print(i)
+        pagelist.append(i-1)
+    return pagelist

@@ -1,6 +1,6 @@
 {% extends 'blog/base.html' %}
 {% block textcontent%}
-    {% for article in articles %}
+    {% for article in pages.object_list %}
         <article class="post post-1">
             <header class="entry-header">
                 <h1 class="entry-title">
@@ -12,7 +12,7 @@
 
                     <span class="post-date"><a href="{% url 'blog:single' article.id %}"><time class="entry-date"
                                                               datetime="2012-11-09T23:15:57+00:00">{{article.create_time}}</time></a></span>
-                    <span class="post-author"><a href="{% url 'blog:single' article.id %}">{{article.author.name}}</a></span>
+                    <span class="post-author"><a href="{% url 'blog:single' article.id %}">{{article.author}}</a></span>
 
                     <span class="comments-link"><a href="{% url 'blog:single' article.id %}">{{article.comment_set.all|length}} 评论</a></span>
 
@@ -27,4 +27,16 @@
             </div>
         </article>
     {% endfor %}
+{% endblock %}
+{% block page %}
+    <div class="pagination-simple">
+        {% if pages.has_previous %}
+            <a href="?page={{pages.previous_page_number}}">上一页</a>
+        {% endif%}
+
+        <span class="current">第 {{pages.number}} 页 / 共 {{pages.paginator.num_pages}} 页</span>
+        {% if pages.has_next %}
+            <a href="?page={{pages.next_page_number}}">下一页</a>
+        {% endif %}
+    </div>
 {% endblock %}

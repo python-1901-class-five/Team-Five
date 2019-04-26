@@ -1,0 +1,32 @@
+{% extends 'blog/base.html' %}
+{% block textcontent %}
+    {% for article  in page.object_list %}
+    <article class="post post-1">
+        <header class="entry-header">
+            <h1 class="entry-title">
+                <a href="{% url 'blog:single' article.object.id %}">{{article.object.atitle}}</a>
+            </h1>
+            <div class="entry-meta">
+
+                <span class="post-category"><a href="{% url 'blog:single' article.object.id %}">{{article.object.category.name}}</a></span>
+
+                <span class="post-date"><a href="{% url 'blog:single' article.object.id %}"><time class="entry-date"
+                                                          datetime="2012-11-09T23:15:57+00:00">{{article.object.create_time}}</time></a></span>
+                <span class="post-author"><a href="{% url 'blog:single' article.object.id %}">{{article.object.author}}</a></span>
+
+                <span class="comments-link"><a href="{% url 'blog:single' article.object.id %}">{{article.object.comment_set.all|length}} 评论</a></span>
+
+                <span class="views-count"><a href="{% url 'blog:single' article.object.id %}">{{article.object.read_count}} 阅读</a></span>
+            </div>
+        </header>
+        <div class="entry-content clearfix">
+            <p>{{article.object.abstract}}</p>
+            <div class="read-more cl-effect-14">
+                <a href="{% url 'blog:single' article.object.id %}" class="more-link">继续阅读 <span class="meta-nav">→</span></a>
+            </div>
+        </div>
+    </article>
+    {% empty %}
+    <span>什么也没有</span>
+    {% endfor %}
+{% endblock %}
