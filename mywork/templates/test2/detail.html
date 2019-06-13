@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>详情页面</title>
+</head>
+<body>
+    {% if book %}
+        <h3>{{book.btitle}}</h3>
+        <h3>{{book.bpubtitle}}</h3>
+    {% else %}
+        <h3>无该图书信息</h3>
+    {% endif %}
+</body>
+</html>

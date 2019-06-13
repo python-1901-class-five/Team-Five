@@ -1,0 +1,27 @@
+div.header{
+    height: 100px;
+    background-color: aqua;
+}
+div.content{
+    margin: 0 auto;
+    width: 1200px;
+    height: 2000px;
+    background-color: gray;
+}
+div.left{
+    width: 30%;
+    height: 2000px;
+    float: left;
+    background-color: cornflowerblue;
+}
+div.right{
+    width: 70%;
+    height: 2000px;
+    float: right;
+    background-color: chartreuse;
+}
+div.footer{
+    height: 200px;
+    background-color: burlywood;
+}
+
